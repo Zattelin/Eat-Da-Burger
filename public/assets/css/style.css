@@ -1,0 +1,13 @@
+body { 
+    background: url("../images/background.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+.burger {
+	display: inline-block;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}

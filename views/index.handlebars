@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-center">Create any kind of Burger!</h1>
+        <form class="text-center" action="/" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" id="burgerInput" name="name" placeholder="Make a burger">
+            </div>
+            <button class="btn btn-default btn-danger" type="submit">Order.</button>
+
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">Pick up.</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        {{#each burgers}} {{#unless this.devoured}}
+                        <li class="list-group-item">
+                            <p class="burger">{{this.name}}</p>
+                            <form class="pull-right">
+                                <input type="hidden" name="devoured" value="true">
+
+                                <button class="btn btn-default btn-danger" type="submit" id="eat-burger">eat</button>
+                            </form>
+                        </li>
+                        {{/unless}} {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">Yay!</h3>
+                </div>
+                <div class="panel-body">
+                    <img class="img-responsive" src="/assets/images/burger.png"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">Clean up.</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        {{#each burgers}} {{#if this.devoured}}
+                        <li class="list-group-item">
+                            <p class="burger">{{this.name}}</p>
+                            <form class="pull-right" action="/{{this.id}}" method="DELETE">  
+                            <button class="btn btn-default btn-danger" type="submit" class="delete-burger">remove burger</button>
+                            </form>
+                        </li>
+                        {{/if}} {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
