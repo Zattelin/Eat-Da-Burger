@@ -13,17 +13,17 @@
         <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title text-center">Pick up.</h3>
+                    <h3 class="panel-title text-center">Order up.</h3>
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
                         {{#each burgers}} {{#unless this.devoured}}
                         <li class="list-group-item">
                             <p class="burger">{{this.name}}</p>
-                            <form class="pull-right">
+                            <form class="pull-right" action="/{{this.id}}?_method=PUT" method="POST">
                                 <input type="hidden" name="devoured" value="true">
 
-                                <button class="btn btn-default btn-danger" type="submit" id="eat-burger">eat</button>
+                                <button class="btn btn-default btn-danger" type="submit" id="eat-burger">Chow Down!</button>
                             </form>
                         </li>
                         {{/unless}} {{/each}}
@@ -44,15 +44,15 @@
         <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title text-center">Clean up.</h3>
+                    <h3 class="panel-title text-center">Empty tray.</h3>
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
                         {{#each burgers}} {{#if this.devoured}}
                         <li class="list-group-item">
                             <p class="burger">{{this.name}}</p>
-                            <form class="pull-right" action="/{{this.id}}" method="DELETE">  
-                            <button class="btn btn-default btn-danger" type="submit" class="delete-burger">remove burger</button>
+                            <form class="pull-right" action="/{{this.id}}?_method=DELETE" method="POST">  
+                            <button  class="btn btn-default btn-danger delete-burger" type="submit">Clean up.</button>
                             </form>
                         </li>
                         {{/if}} {{/each}}
